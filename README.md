@@ -1,56 +1,107 @@
 🛡️ PacketShield-DPI
-A real-time Deep Packet Inspection (DPI) engine built using Java and Spring Boot.
+A real-time Deep Packet Inspection (DPI) engine developed using Java and Spring Boot.
+This project monitors network traffic at packet level to detect, log, and simulate blocking of restricted domains.
 
-📝 Project Overview
-This project monitors network traffic at the packet level to detect, log, and simulate blocking of restricted domains. It works below the Application Layer, focusing on the Network and Transport layers.
+🚀 Features
+🔎 Live Traffic Sniffing
+Captures packets across all active network interfaces (WiFi, Ethernet, USB)
+Built using Pcap4J + Npcap
 
-🚀 Key Features
-🔎 Live Traffic Sniffing: Captures packets across all active network interfaces like WiFi, Ethernet, and USB.
+🧠 Deep Packet Inspection (DPI)
+Analyzes raw packet bytes
+Extracts domain-level information (including HTTPS SNI inspection)
+Detects restricted domains in real-time
 
-🧠 Deep Packet Inspection (DPI): Analyzes raw packet bytes to extract domain-level information, including HTTPS SNI inspection.
+🚨 Real-Time Security Alerts
+Instant console-based security logging
+Detects unauthorized access attempts
 
-🚨 Real-Time Security Alerts: Features structured console-based alert logging for immediate detection of unauthorized access.
+🗄️ Dynamic Rule Engine
+Integrated with Spring Data JPA + H2 Database
+Supports runtime management of blocked domains
 
-🗄️ Dynamic Rule Engine: Integrated with Spring Data JPA and H2 Database for runtime domain management without restarts.
+🔥 Firewall Simulation Logic
+Implements TCP RST packet injection
+Simulates forced connection termination
 
-⚡ Multithreaded Monitoring: Uses parallel sniffing threads per interface to ensure high-performance monitoring.
+⚡ Multithreaded Monitoring
+Parallel packet sniffing across multiple interfaces
+Ensures high-performance real-time processing
 
-🔥 Firewall Simulation Logic: Implements TCP RST packet injection to simulate forced connection termination.
+🧱 Architecture
+The project follows a modular layered design:
 
-🏗️ System Architecture
-Traffic Flow:
-Network Interface → Packet Capture (Pcap4J) → Packet Decoder → DPI Engine → Rule Engine (H2 Database) → Security Alert / TCP Reset
+text
+Packet Capture Layer → DPI Engine Layer → Rule Engine Layer → Alert System → Persistence Layer
+Packet Capture Layer – Captures raw packets using Pcap4J
+
+DPI Engine Layer – Decodes and analyzes packet data
+
+Rule Engine Layer – Matches extracted domains with database rules
+
+Alert System – Logs alerts and triggers TCP reset
+
+Persistence Layer – Manages blocked domains using H2 + JPA
 
 🛠️ Tech Stack
-Backend: Java, Spring Boot 3.x
-
-Persistence: Spring Data JPA / Hibernate
-
-Database: H2 (In-Memory)
-
-Networking: Pcap4J, Npcap
-
-Approach: AI-assisted debugging and architecture refinement (Gemini).
-
-📋 How It Works
-Initialize: Scans and lists all available network interfaces.
-
-Monitor: Starts asynchronous sniffing threads for each active interface.
-
-Inspect: Decodes packets and extracts domain signatures.
-
-Match: Compares signatures with the blacklist stored in the H2 Database.
-
-Action: Logs a 🚫 [SECURITY ALERT] and injects a TCP RST packet.
-
+Technology	Purpose
+Java	Core programming language
+Spring Boot 3.x	Application framework
+Spring Data JPA / Hibernate	Database ORM
+H2 Database	In-Memory database
+Pcap4J	Packet capture library
+Npcap	Windows packet capture driver
+Git & GitHub	Version control
+📂 Project Structure
+text
+src/main/java/com/packetshield/
+├── config/
+├── controller/
+├── dpi/
+├── model/
+├── repository/
+├── service/
+└── util/
 ⚙️ How to Run
-Install Npcap: Ensure "WinPcap Compatibility Mode" is enabled.
+Clone the repository
 
-Clone: Download the repository to your local machine.
+bash
+git clone https://github.com/adityasaini/PacketShield-DPI.git
+Install Npcap
 
-Admin Rights: Run the application as Administrator (required for packet injection).
+Download from npcap.com
 
-Monitor: Check console logs for real-time inspection.
+Enable WinPcap compatibility mode during installation
 
-⚠️ Disclaimer
-This project is built strictly for educational and research purposes. Please use it only in authorized environments.
+Run as Administrator
+
+bash
+mvn spring-boot:run
+Monitor console logs for real-time packet inspection output
+
+🎯 Learning Outcomes
+Deep Packet Inspection fundamentals
+
+HTTPS handshake & SNI analysis
+
+TCP packet crafting concepts
+
+Multithreading in real-time systems
+
+Backend + low-level networking integration
+
+📌 Future Enhancements
+Web dashboard for live monitoring
+
+REST API for dynamic rule management
+
+Advanced payload-based filtering
+
+Intrusion Detection System (IDS) features
+
+👨‍💻 Author
+Aditya Saini
+Aspiring Java Backend & Security Developer
+GitHub | LinkedIn
+
+⭐ Star this repository if you found it helpful!
