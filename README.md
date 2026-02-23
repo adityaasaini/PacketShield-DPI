@@ -1,10 +1,7 @@
 🛡️ PacketShield-DPI
-🚀 Real-Time Deep Packet Inspection Engine
 
 PacketShield is a high-performance Network Security Engine built for real-time Deep Packet Inspection (DPI).
 It monitors network traffic at the packet level to detect, log, and simulate blocking of restricted domains.
-
-This project demonstrates practical firewall logic, low-level packet analysis, and backend-driven rule management.
 
 🚀 Core Features
 🔎 Live Traffic Sniffing
@@ -32,7 +29,8 @@ Parallel sniffing threads per active interface ensure real-time monitoring with 
 Implements TCP RST injection logic to simulate forced connection termination.
 
 🏗️ System Architecture
-Flow Diagram
+
+Flow:
 
 Network Interface
 ⬇
@@ -46,7 +44,7 @@ Rule Engine (H2 Database)
 ⬇
 Security Alert / TCP Reset
 
-👉 Works below the Application Layer (Network & Transport Layer Focus).
+Works below the Application Layer (Network & Transport Layer Focus).
 
 🛠️ Technical Stack
 
