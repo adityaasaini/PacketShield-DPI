@@ -1,4 +1,4 @@
-🛡️##PacketShield-DPI
+🛡️#PacketShield-DPI
 
 A real-time Deep Packet Inspection (DPI) engine developed using Java and Spring Boot.
 This project monitors network traffic at packet level to detect, log, and simulate blocking of restricted domains.
