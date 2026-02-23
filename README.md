@@ -1,62 +1,27 @@
 🛡️ PacketShield-DPI
-
 A real-time Deep Packet Inspection (DPI) engine built using Java and Spring Boot.
-This project monitors network traffic at the packet level to detect, log, and simulate blocking of restricted domains.
 
-🚀 Features
-🔎 Live Traffic Sniffing
+📝 Project Overview
+This project monitors network traffic at the packet level to detect, log, and simulate blocking of restricted domains. It works below the Application Layer, focusing on the Network and Transport layers.
 
-Captures packets across all active network interfaces (WiFi, Ethernet, USB)
+🚀 Key Features
+🔎 Live Traffic Sniffing: Captures packets across all active network interfaces like WiFi, Ethernet, and USB.
 
-Built using Pcap4J + Npcap
+🧠 Deep Packet Inspection (DPI): Analyzes raw packet bytes to extract domain-level information, including HTTPS SNI inspection.
 
-🧠 Deep Packet Inspection (DPI)
+🚨 Real-Time Security Alerts: Features structured console-based alert logging for immediate detection of unauthorized access.
 
-Analyzes raw packet bytes
+🗄️ Dynamic Rule Engine: Integrated with Spring Data JPA and H2 Database for runtime domain management without restarts.
 
-Extracts domain-level information (including HTTPS SNI inspection)
+⚡ Multithreaded Monitoring: Uses parallel sniffing threads per interface to ensure high-performance monitoring.
 
-Detects restricted targets in real time
-
-🚨 Real-Time Security Alerts
-
-Structured console-based alert logging
-
-Immediate detection of unauthorized access attempts
-
-🗄️ Dynamic Rule Engine
-
-Integrated with Spring Data JPA + H2 Database
-
-Supports runtime domain management without restart
-
-⚡ Multithreaded Monitoring
-
-Parallel sniffing threads per network interface
-
-Ensures high-performance real-time monitoring
-
-🔥 Firewall Simulation Logic
-
-Implements TCP RST packet injection
-
-Simulates forced connection termination
+🔥 Firewall Simulation Logic: Implements TCP RST packet injection to simulate forced connection termination.
 
 🏗️ System Architecture
-
-Flow:
-
-Network Interface
-→ Packet Capture (Pcap4J)
-→ Packet Decoder
-→ DPI Engine
-→ Rule Engine (H2 Database)
-→ Security Alert / TCP Reset
-
-Works below the Application Layer (Network & Transport Layer focus).
+Traffic Flow:
+Network Interface → Packet Capture (Pcap4J) → Packet Decoder → DPI Engine → Rule Engine (H2 Database) → Security Alert / TCP Reset
 
 🛠️ Tech Stack
-
 Backend: Java, Spring Boot 3.x
 
 Persistence: Spring Data JPA / Hibernate
@@ -65,44 +30,27 @@ Database: H2 (In-Memory)
 
 Networking: Pcap4J, Npcap
 
-Architecture: Multithreaded, Event-Driven
-
-Development Approach: AI-assisted debugging (Gemini)
+Approach: AI-assisted debugging and architecture refinement (Gemini).
 
 📋 How It Works
-1️⃣ Initialize
+Initialize: Scans and lists all available network interfaces.
 
-Scans and lists all available network interfaces.
+Monitor: Starts asynchronous sniffing threads for each active interface.
 
-2️⃣ Monitor
+Inspect: Decodes packets and extracts domain signatures.
 
-Starts asynchronous sniffing threads for each active interface.
+Match: Compares signatures with the blacklist stored in the H2 Database.
 
-3️⃣ Inspect
-
-Decodes packets and extracts domain signatures.
-
-4️⃣ Match
-
-Compares extracted domain with blacklist stored in H2 Database.
-
-5️⃣ Alert / Terminate
-
-🚫 [SECURITY ALERT] logged
-
-TCP RST packet injected
+Action: Logs a 🚫 [SECURITY ALERT] and injects a TCP RST packet.
 
 ⚙️ How to Run
+Install Npcap: Ensure "WinPcap Compatibility Mode" is enabled.
 
-Install Npcap (Enable WinPcap Compatibility Mode).
+Clone: Download the repository to your local machine.
 
-Clone the repository.
+Admin Rights: Run the application as Administrator (required for packet injection).
 
-Run the application as Administrator.
-
-Monitor console logs for real-time packet inspection.
+Monitor: Check console logs for real-time inspection.
 
 ⚠️ Disclaimer
-
-This project is built strictly for educational and research purposes.
-Use only in authorized environments
+This project is built strictly for educational and research purposes. Please use it only in authorized environments.
