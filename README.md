@@ -3,18 +3,16 @@
 A real-time Deep Packet Inspection (DPI) engine developed using Java and Spring Boot.
 This project monitors network traffic at packet level to detect, log, and simulate blocking of restricted domains.
 --
-🚀 ##Features
-
+🚀 Features
 🔎 Live Traffic Sniffing
 Captures packets across all active network interfaces (WiFi, Ethernet, USB)
 Built using Pcap4J + Npcap
----
-🧠 ##Deep Packet Inspection (DPI)
-
+-
+🧠#Deep Packet Inspection (DPI)
 Analyzes raw packet bytes
 Extracts domain-level information (including HTTPS SNI inspection)
 Detects restricted domains in real-time
----
+----
 🚨 Real-Time Security Alerts
 Instant console-based security logging
 Detects unauthorized access attempts
